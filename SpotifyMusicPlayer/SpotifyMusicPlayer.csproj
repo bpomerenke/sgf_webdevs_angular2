@@ -72,6 +72,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\app\app.component.html" />
     <Content Include="src\tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="tslint.json" />
