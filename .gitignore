@@ -22,5 +22,7 @@ TestResult.xml
 /**/npm-debug.log*
 
 # Typescript generated files
-*/src/**/*.js
-*/src/**/*.js.map
+*/src/main.js
+*/src/main.js.map
+*/src/app/*.js
+*/src/app/*.js.map
