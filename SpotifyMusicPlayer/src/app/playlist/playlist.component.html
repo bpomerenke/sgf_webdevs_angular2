@@ -1,0 +1,4 @@
+﻿<ul>
+    <li *ngFor="let track of playlist">{{track.name}} - {{track.album}} - {{track.artist}} <a *ngIf="hasPreview(track)" href="{{track.preview}}" target="blank">Preview</a></li>
+</ul>
+

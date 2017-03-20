@@ -24,5 +24,5 @@ TestResult.xml
 # Typescript generated files
 */src/main.js
 */src/main.js.map
-*/src/app/*.js
-*/src/app/*.js.map
+*/src/app/**/*.js
+*/src/app/**/*.js.map

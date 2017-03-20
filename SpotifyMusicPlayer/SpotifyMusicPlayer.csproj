@@ -73,6 +73,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\auth\auth.component.html" />
+    <Content Include="src\app\playlist\playlist.component.html" />
     <Content Include="src\tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="tslint.json" />
@@ -93,8 +95,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\auth\auth.component.ts" />
+    <TypeScriptCompile Include="src\app\playlist\playlist.component.ts" />
+    <TypeScriptCompile Include="src\app\services\playlist.service.ts" />
+    <TypeScriptCompile Include="src\app\playlist\track.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
