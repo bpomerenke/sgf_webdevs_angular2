@@ -46,12 +46,29 @@ export class PlaylistComponent implements OnInit {
     }
 
     loadAndPlayTrack(track: Track): void {
-        if (!this.hasPreview(track)) return;
-        this.playlistVisible = false;
         this.currentTrack = track;
+        if (!this.hasPreview(track)) {
+            this.waveSurfer.empty();
+            return;
+        }
+        this.playlistVisible = false;
         this.waveSurfer.load(track.preview);
         this.playTrack();
-     }
+    }
+
+    prevTrack(): void {
+        this.waveSurfer.stop();
+        let curTrackIdx = this.playlist.indexOf(this.currentTrack);
+        let prevTrackIdx = (curTrackIdx - 1) % this.playlist.length;
+        this.loadAndPlayTrack(this.playlist[prevTrackIdx]);
+    }
+
+    nextTrack(): void {
+        this.waveSurfer.stop();
+        let curTrackIdx = this.playlist.indexOf(this.currentTrack);
+        let nextTrackIdx = (curTrackIdx + 1) % this.playlist.length;
+        this.loadAndPlayTrack(this.playlist[nextTrackIdx]);        
+    }
 
     playTrack(): void {
         this.waveSurfer.play();
