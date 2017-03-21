@@ -18,6 +18,11 @@ export class PlaylistComponent implements OnInit {
     waveSurfer: any;
 
     ngOnInit(): void {
+        //TODO: there's a better way to do this
+        if (this.playlistService.accessToken.length === 0) {
+             this.router.navigate([""]);
+             return;
+        }
         this.waveSurfer = Object.create(WaveSurfer);
         this.waveSurfer.init({
             container: document.querySelector('#wave'),

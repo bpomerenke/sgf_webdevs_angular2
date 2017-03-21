@@ -6,11 +6,16 @@ import {PlaylistService} from "./services/playlist.service";
   selector: 'spotify-music-player',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
     queryResponse: String;
 
     constructor(private playlistService: PlaylistService) { }
 
-    ngOnInit(): void {
+    hasAccessToken(): boolean {
+        return this.playlistService.accessToken.length > 0;
     }
+
+    initAuth(): void {
+        this.playlistService.initializeAuth();
+    };
 }

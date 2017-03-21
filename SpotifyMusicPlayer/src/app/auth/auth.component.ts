@@ -23,7 +23,4 @@ export class AuthComponent implements OnInit {
         });
     }
 
-    initAuth(): void {
-        this.playlistService.initializeAuth();
-    };
 }

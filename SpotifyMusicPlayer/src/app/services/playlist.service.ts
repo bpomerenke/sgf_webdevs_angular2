@@ -10,7 +10,7 @@ export class PlaylistService {
     constructor(private http: Http) { }
 
     private clientId = '6d97a1cf9f0f4f97aa4795cda2723757';
-    accessToken: String;
+    accessToken: String = '';
 
     initializeAuth(): void {
         let params: URLSearchParams = new URLSearchParams();
