@@ -25,7 +25,8 @@ export class PlaylistComponent implements OnInit {
             cursorWidth: 1,
             height: 80,
             waveColor: '#588efb',
-            progressColor: '#f043a4'
+            progressColor: '#f043a4',
+            backend: 'MediaElement'
         });
         this.playlistService.getPlaylist().then((tracks) => {
             this.playlist = tracks;
@@ -34,5 +35,10 @@ export class PlaylistComponent implements OnInit {
     
     hasPreview(track: Track): boolean {
         return track.preview !== null;
+    }
+
+    playTrack(track: Track): void {
+        this.waveSurfer.load(track.preview);
+        this.waveSurfer.play();
     }
 }
