@@ -3,5 +3,6 @@
     artist: string;
     album: string;
     preview: string;
+    picture_large: string;
     picture: string;
 }

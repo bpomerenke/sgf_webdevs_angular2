@@ -1,7 +1,7 @@
 ﻿<div id="container">
     <div id="cover-art">
         <div id="cover-art-big"></div>
-        <img id="cover-art-small" alt="cover-art-small" src="/assets/img/default.png">
+        <img id="cover-art-small" *ngIf="currentTrack" alt="cover-art-small" src="{{currentTrack.picture_large}}">
         <div class="instructions">Drop your audio files here.</div>
     </div>
     <div id="wave"></div>
