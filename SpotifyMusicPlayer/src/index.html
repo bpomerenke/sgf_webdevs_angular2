@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Spotify Music Player</title>
@@ -11,10 +11,13 @@
 
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="assets/js/wavesurfer.min.js"></script>
     <script src="systemjs.config.js"></script>
     <script>
       System.import('main.js').catch(function(err){ console.error(err); });
     </script>
+      <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="assets/css/font-awesome-4.3.0/css/font-awesome.min.css">
   </head>
 
   <body>

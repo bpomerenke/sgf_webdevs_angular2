@@ -75,6 +75,9 @@
     <Content Include="src\app\app.component.html" />
     <Content Include="src\app\auth\auth.component.html" />
     <Content Include="src\app\playlist\playlist.component.html" />
+    <Content Include="src\assets\css\style.css" />
+    <Content Include="src\assets\img\default.png" />
+    <Content Include="src\assets\js\wavesurfer.min.js" />
     <Content Include="src\tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="tslint.json" />
