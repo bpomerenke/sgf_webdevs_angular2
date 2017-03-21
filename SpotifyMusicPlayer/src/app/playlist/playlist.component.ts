@@ -45,12 +45,24 @@ export class PlaylistComponent implements OnInit {
         return track.preview !== null;
     }
 
-    playTrack(track: Track): void {
+    loadAndPlayTrack(track: Track): void {
         if (!this.hasPreview(track)) return;
         this.playlistVisible = false;
         this.currentTrack = track;
         this.waveSurfer.load(track.preview);
+        this.playTrack();
+     }
+
+    playTrack(): void {
         this.waveSurfer.play();
+    }
+
+    pauseTrack(): void {
+        this.waveSurfer.pause();
+    }
+
+    stopTrack(): void {
+        this.waveSurfer.stop();
     }
 
     togglePlaylist(): void {
