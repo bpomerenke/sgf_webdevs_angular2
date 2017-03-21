@@ -32,7 +32,7 @@
                     <li *ngFor="let track of playlist" class="track" [ngClass]="{'active' : isPlaying(track) }" (click)="playTrack(track)">
                         <div>
                             <span class="overlay"><i class="fa fa-play"></i></span>
-<!--                            <img src="{{track.picture}}" />-->
+                            <img src="{{track.picture}}" />
                         </div>
                         <div>
                             <p class="title">{{track.name}}</p>

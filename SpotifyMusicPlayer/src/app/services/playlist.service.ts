@@ -35,6 +35,7 @@ export class PlaylistService {
                     newTrack.preview = item.track.preview_url;
                     newTrack.album = item.track.album.name;
                     newTrack.artist = item.track.artists[0].name;
+                    newTrack.picture = item.track.album.images[2].url;
                     tracks.push(newTrack);
                 }
                 console.log("response: ", response.json());

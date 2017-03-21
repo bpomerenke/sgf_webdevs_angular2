@@ -3,4 +3,5 @@
     artist: string;
     album: string;
     preview: string;
+    picture: string;
 }
