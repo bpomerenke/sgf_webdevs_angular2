@@ -317,6 +317,10 @@ body, html{
 	background-color: #DBE0E4!important;
 }
 
+.track.disabled {
+    opacity: 0.5;
+}
+
 .track p.title{
 	font-size: 18px;
 	margin-top: 14px;

@@ -29,7 +29,7 @@
                     <label for="searchBox">Search</label><div><input id="searchBox" type="search" name="search"></div>
                 </form>
                 <ul>
-                    <li *ngFor="let track of playlist" class="track" [ngClass]="{'active' : isPlaying(track) }" (click)="playTrack(track)">
+                    <li *ngFor="let track of playlist" class="track" [ngClass]="{'active' : isPlaying(track), 'disabled' : !hasPreview(track) }" (click)="playTrack(track)">
                         <div>
                             <span class="overlay"><i class="fa fa-play"></i></span>
                             <img src="{{track.picture}}" />
