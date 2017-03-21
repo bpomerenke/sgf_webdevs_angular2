@@ -16,6 +16,8 @@ export class PlaylistComponent implements OnInit {
 
     playlist: Track[];
     waveSurfer: any;
+    playlistVisible = false;
+    currentTrack: Track;
 
     ngOnInit(): void {
         //TODO: there's a better way to do this
@@ -35,6 +37,7 @@ export class PlaylistComponent implements OnInit {
         });
         this.playlistService.getPlaylist().then((tracks) => {
             this.playlist = tracks;
+            this.currentTrack = this.playlist[0];
         });
     }
     
@@ -43,7 +46,17 @@ export class PlaylistComponent implements OnInit {
     }
 
     playTrack(track: Track): void {
+        this.playlistVisible = false;
+        this.currentTrack = track;
         this.waveSurfer.load(track.preview);
         this.waveSurfer.play();
+    }
+
+    togglePlaylist(): void {
+        this.playlistVisible = !this.playlistVisible;
+    }
+
+    isPlaying(track: Track): boolean {
+        return this.currentTrack === track;
     }
 }

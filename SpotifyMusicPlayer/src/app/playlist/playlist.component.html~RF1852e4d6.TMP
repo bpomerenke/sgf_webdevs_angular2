@@ -16,31 +16,18 @@
             <div id="repeat-button" title="Repeat Off"><i class="fa fa-refresh"><span>1</span></i></div>
         </div>
         <div id="playlist">
-            <div id="track-details" title="{{playlistVisible ? 'Hide playlist' : 'Show playlist'}}" (click)="togglePlaylist()">
+            <div id="track-details" title="Show playlist" (click)="togglePlaylist()">
                 <i class="fa fa-sort"></i>
-                <p id="track-desc" *ngIf="currentTrack"><strong>{{currentTrack.name}}</strong> by {{currentTrack.artist}}</p>
-                <p id="track-desc" *ngIf="!currentTrack">There are no tracks loaded in the player.</p>
+                <p id="track-desc">There are no tracks loaded in the player.</p>
                 <p id="track-time">
                     <span id="current">-</span> / <span id="total">-</span>
                 </p>
             </div>
-            <div id="expand-bar" [ngClass]="{ 'hidden' : !playlistVisible }">
+            <div id="expand-bar" [ngClass]="{ !playlistVisible : 'hidden' }">
                 <form>
                     <label for="searchBox">Search</label><div><input id="searchBox" type="search" name="search"></div>
                 </form>
-                <ul>
-                    <li *ngFor="let track of playlist" class="track" [ngClass]="{'active' : isPlaying(track) }" (click)="playTrack(track)">
-                        <div>
-                            <span class="overlay"><i class="fa fa-play"></i></span>
-<!--                            <img src="{{track.picture}}" />-->
-                        </div>
-                        <div>
-                            <p class="title">{{track.name}}</p>
-                            <p class="artist">{{track.artist}}</p>
-                            <span title="Remove Track From Player" class="remove-track">×</span>
-                        </div>
-                    </li>
-                </ul>
+                <ul id="list"></ul>
             </div>
         </div>
     </div>

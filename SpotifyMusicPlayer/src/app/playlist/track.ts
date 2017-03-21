@@ -1,6 +1,6 @@
 ﻿export class Track {
-    name: String;
-    artist: String;
-    album: String;
-    preview: String;
+    name: string;
+    artist: string;
+    album: string;
+    preview: string;
 }

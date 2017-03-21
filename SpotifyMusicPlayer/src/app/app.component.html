@@ -1,5 +1,5 @@
-﻿<h1>Spotify Music Player</h1>
-<div *ngIf="!hasAccessToken()">
+﻿<div *ngIf="!hasAccessToken()">
+    <h1>Spotify Music Player</h1>
     Please login to spotify to see content <button (click)="initAuth()">Login</button>
 </div>
 <router-outlet></router-outlet>
