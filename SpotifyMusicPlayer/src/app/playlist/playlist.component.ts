@@ -37,7 +37,7 @@ export class PlaylistComponent implements OnInit {
         });
         this.playlistService.getPlaylist().then((tracks) => {
             this.playlist = tracks;
-            this.currentTrack = this.playlist[0];
+            this.loadTrack(tracks[0]);
         });
     }
     
@@ -45,15 +45,21 @@ export class PlaylistComponent implements OnInit {
         return track.preview !== null;
     }
 
-    loadAndPlayTrack(track: Track): void {
+    loadTrack(track: Track): boolean {
         this.currentTrack = track;
         if (!this.hasPreview(track)) {
             this.waveSurfer.empty();
-            return;
+            return false;
         }
         this.playlistVisible = false;
         this.waveSurfer.load(track.preview);
-        this.playTrack();
+        return true;
+    }
+
+    loadAndPlayTrack(track: Track): void {
+        if(this.loadTrack(track)) {
+            this.playTrack();            
+        }
     }
 
     prevTrack(): void {
