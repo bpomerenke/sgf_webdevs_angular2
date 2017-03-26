@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { PlaylistService } from "../services/playlist.service";
@@ -18,6 +18,7 @@ export class PlaylistComponent implements OnInit {
     waveSurfer: any;
     playlistVisible = false;
     currentTrack: Track;
+    @Input() searchTerm: string;
 
     ngOnInit(): void {
         //TODO: there's a better way to do this
@@ -39,6 +40,13 @@ export class PlaylistComponent implements OnInit {
             this.playlist = tracks;
             this.loadTrack(tracks[0]);
         });
+    }
+
+    getTracks(): Track[] {
+        if (!this.playlist) return [];
+        if (!this.searchTerm || this.searchTerm.length === 0) return this.playlist;
+
+        return this.playlist.filter(track => track.hasInfoMatching(this.searchTerm));
     }
     
     hasPreview(track: Track): boolean {

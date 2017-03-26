@@ -26,10 +26,10 @@
             </div>
             <div id="expand-bar" [ngClass]="{ 'hidden' : !playlistVisible }">
                 <form>
-                    <label for="searchBox">Search</label><div><input id="searchBox" type="search" name="search"></div>
+                    <label for="searchBox">Search</label><div><input id="searchBox" type="search" name="search" [(ngModel)]="searchTerm"></div>
                 </form>
                 <ul>
-                    <li *ngFor="let track of playlist" class="track" [ngClass]="{'active' : isPlaying(track), 'disabled' : !hasPreview(track) }" (click)="loadAndPlayTrack(track)">
+                    <li *ngFor="let track of getTracks()" class="track" [ngClass]="{'active' : isPlaying(track), 'disabled' : !hasPreview(track) }" (click)="loadAndPlayTrack(track)">
                         <div>
                             <span class="overlay"><i class="fa fa-play"></i></span>
                             <img src="{{track.picture}}" />
