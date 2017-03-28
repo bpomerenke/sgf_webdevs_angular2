@@ -34,6 +34,10 @@ export class AuthService {
         let currentToken = this.read<AuthToken>(this.LOCAL_STORAGE_KEY);
         return currentToken.token;
     }
+    getExpiration(): Date {
+        let currentToken = this.read<AuthToken>(this.LOCAL_STORAGE_KEY);
+        return new Date(currentToken.expiration);
+    }
 
     private write(key: string, value: any) : void {
         if (value) {

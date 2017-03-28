@@ -15,6 +15,14 @@ export class AppComponent{
         return this.authService.hasAccessToken();
     }
 
+    accessTokenExpiration(): Date {
+        return this.authService.getExpiration();
+    }
+
+    now(): Date {
+        return new Date();
+    }
+
     initAuth(): void {
         this.authService.init();
     };
