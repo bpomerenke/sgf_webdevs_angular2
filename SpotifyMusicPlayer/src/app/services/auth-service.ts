@@ -1,8 +1,14 @@
 ﻿import { URLSearchParams } from '@angular/http';
 
+export class AuthToken {
+    token: string;
+    expiration: number;
+}
+
 export class AuthService {
 
     private clientId = '6d97a1cf9f0f4f97aa4795cda2723757';
+    private LOCAL_STORAGE_KEY = 'spotifyAccessToken';
 
     init(): void {
         let params: URLSearchParams = new URLSearchParams();
@@ -15,15 +21,18 @@ export class AuthService {
     }
 
     hasAccessToken(): boolean {
-        return this.getAccessToken() !== null;
+        let currentToken = this.read<AuthToken>(this.LOCAL_STORAGE_KEY);
+        return !!currentToken && currentToken.expiration > new Date().getTime();
     }
 
-    setAccessToken(accessToken: string): void {
-        this.write('spotifyAccessToken', accessToken);
+    setAccessToken(accessToken: string, timeToLive: number): void {
+        let authToken: AuthToken = { token: accessToken, expiration: new Date(new Date().getTime() + 1000 * timeToLive).getTime() }
+        this.write(this.LOCAL_STORAGE_KEY, authToken);
     }
 
     getAccessToken(): string {
-        return this.read<string>('spotifyAccessToken');
+        let currentToken = this.read<AuthToken>(this.LOCAL_STORAGE_KEY);
+        return currentToken.token;
     }
 
     private write(key: string, value: any) : void {

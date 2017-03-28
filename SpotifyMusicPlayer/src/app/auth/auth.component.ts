@@ -14,10 +14,13 @@ export class AuthComponent implements OnInit {
     
     ngOnInit(): void {
         this.activatedRoute.fragment.subscribe((fragment: String) => {
+            console.log('fragment: ', fragment);
             if (fragment && fragment.length > 'access_token'.length) {
                 let accessTokenFrag = fragment.split('&')[0].split('=')[1];
+                let expiresAtFrag = fragment.split('&')[2].split('=')[1];
+
                 if (accessTokenFrag !== '') {
-                    this.authService.setAccessToken(accessTokenFrag);
+                    this.authService.setAccessToken(accessTokenFrag, +expiresAtFrag);
                     this.router.navigate(["playlist"]);
                 }   
             }
