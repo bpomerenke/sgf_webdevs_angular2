@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PlaylistService} from "./services/playlist.service";
+import { AuthService } from "./services/auth-service";
 
 @Component({
   moduleId: module.id,
@@ -9,13 +9,13 @@ import {PlaylistService} from "./services/playlist.service";
 export class AppComponent{
     queryResponse: String;
 
-    constructor(private playlistService: PlaylistService) { }
+    constructor(private authService: AuthService) { }
 
     hasAccessToken(): boolean {
-        return this.playlistService.accessToken.length > 0;
+        return this.authService.hasAccessToken();
     }
 
     initAuth(): void {
-        this.playlistService.initializeAuth();
+        this.authService.init();
     };
 }

@@ -9,11 +9,12 @@ import { PlaylistService } from './services/playlist.service'
 import { AuthComponent } from "./auth/auth.component";
 import { PlaylistComponent } from "./playlist/playlist.component";
 import { SpotifyApiAuthInit } from "./auth/spotify-api-auth-init";
+import { AuthService } from "./services/auth-service";
 
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule, FormsModule ],
   declarations: [ AppComponent, AuthComponent, PlaylistComponent ],
   bootstrap: [ AppComponent ],
-  providers: [ PlaylistService, SpotifyApiAuthInit ]
+  providers: [ PlaylistService, AuthService, SpotifyApiAuthInit ]
 })
 export class AppModule { }

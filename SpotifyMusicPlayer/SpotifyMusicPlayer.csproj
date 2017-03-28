@@ -106,6 +106,7 @@
     <TypeScriptCompile Include="src\app\playlist\playlist.component.ts" />
     <TypeScriptCompile Include="src\app\services\playlist.service.ts" />
     <TypeScriptCompile Include="src\app\playlist\track.ts" />
+    <TypeScriptCompile Include="src\app\services\auth-service.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
