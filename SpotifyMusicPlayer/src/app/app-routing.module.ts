@@ -3,10 +3,12 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AuthComponent } from "./auth/auth.component";
 import { PlaylistComponent } from "./playlist/playlist.component";
+import { SpotifyApiAuthInit } from "./auth/spotify-api-auth-init";
 
 const routes: Routes = [
-    { path: "playlist", component: PlaylistComponent },
-    { path: "auth", component: AuthComponent }
+    { path: "playlist", component: PlaylistComponent, canActivate: [SpotifyApiAuthInit] },
+    { path: "auth", component: AuthComponent },
+    { path: "**", redirectTo: "/playlist", pathMatch: "full" }
 ];
 
 @NgModule({
