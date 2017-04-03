@@ -83,12 +83,9 @@ export class PlaylistComponent implements OnInit {
     }
 
     private wrapMoveTrack(delta: number): Track {
-        console.log('length: ', this.playlist.length);
         let curTrackIdx = this.playlist.indexOf(this.currentTrack);
-        console.log("curTrackIdx:", curTrackIdx);
         if (curTrackIdx + delta < 0) curTrackIdx += this.playlist.length;
         let nextTrackIdx = (curTrackIdx + delta) % this.playlist.length;
-        console.log("nextTrackIdx:", nextTrackIdx);
         return this.playlist[nextTrackIdx];
     }
 
