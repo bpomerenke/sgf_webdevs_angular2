@@ -21,7 +21,7 @@
                 <p id="track-desc" *ngIf="currentTrack"><strong>{{currentTrack.name}}</strong> by {{currentTrack.artist}}</p>
                 <p id="track-desc" *ngIf="!currentTrack">There are no tracks loaded in the player.</p>
                 <p id="track-time">
-                    <span id="current">-</span> / <span id="total">-</span>
+                    <span id="current">{{currentTime | date:'mm:ss'}}</span> / <span id="total">{{totalTime | date:'mm:ss'}}</span>
                 </p>
             </div>
             <div id="expand-bar" [ngClass]="{ 'hidden' : !playlistVisible }">

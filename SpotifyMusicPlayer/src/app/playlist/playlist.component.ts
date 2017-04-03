@@ -18,6 +18,8 @@ export class PlaylistComponent implements OnInit {
     waveSurfer: any;
     playlistVisible = false;
     currentTrack: Track;
+    currentTime: Date = new Date(0,0,0,0,0,0,0);
+    totalTime: Date = new Date(0,0,0,0,0,0,0);
     @Input() searchTerm: string;
 
     ngOnInit(): void {
@@ -55,7 +57,21 @@ export class PlaylistComponent implements OnInit {
             return false;
         }
         this.playlistVisible = false;
+        this.waveSurfer.un('ready');
+        this.waveSurfer.un('audioprocess');
         this.waveSurfer.load(track.preview);
+        this.waveSurfer.on('ready', () => {
+            let duration = this.waveSurfer.getDuration() || 0;
+            let newTime = new Date(0, 0, 0, 0, 0, 0, 0);
+            newTime.setSeconds(duration);
+            this.totalTime = newTime;
+        });
+        this.waveSurfer.on('audioprocess', () => {
+            let currentTime = this.waveSurfer.getCurrentTime() || 0;
+            let newTime = new Date(0, 0, 0, 0, 0, 0, 0);
+            newTime.setSeconds(currentTime);
+            this.currentTime = newTime;
+        });
         return true;
     }
 
