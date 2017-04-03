@@ -50,6 +50,12 @@ export class PlaylistComponent implements OnInit {
         return track.preview !== null;
     }
 
+    private convertToDate(seconds: number) : Date {
+        let newTime = new Date(0, 0, 0, 0, 0, 0, 0);
+        newTime.setSeconds(seconds || 0);
+        return newTime;
+    }
+
     loadTrack(track: Track): boolean {
         this.currentTrack = track;
         if (!this.hasPreview(track)) {
@@ -59,19 +65,14 @@ export class PlaylistComponent implements OnInit {
         this.playlistVisible = false;
         this.waveSurfer.un('ready');
         this.waveSurfer.un('audioprocess');
-        this.waveSurfer.load(track.preview);
         this.waveSurfer.on('ready', () => {
-            let duration = this.waveSurfer.getDuration() || 0;
-            let newTime = new Date(0, 0, 0, 0, 0, 0, 0);
-            newTime.setSeconds(duration);
-            this.totalTime = newTime;
+            this.totalTime = this.convertToDate(this.waveSurfer.getDuration());
         });
         this.waveSurfer.on('audioprocess', () => {
-            let currentTime = this.waveSurfer.getCurrentTime() || 0;
-            let newTime = new Date(0, 0, 0, 0, 0, 0, 0);
-            newTime.setSeconds(currentTime);
-            this.currentTime = newTime;
+            this.currentTime = this.convertToDate(this.waveSurfer.getCurrentTime());
+            this.totalTime = this.convertToDate(this.waveSurfer.getDuration());
         });
+        this.waveSurfer.load(track.preview);
         return true;
     }
 
