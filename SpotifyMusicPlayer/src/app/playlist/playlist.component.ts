@@ -82,18 +82,24 @@ export class PlaylistComponent implements OnInit {
         }
     }
 
+    private wrapMoveTrack(delta: number): Track {
+        console.log('length: ', this.playlist.length);
+        let curTrackIdx = this.playlist.indexOf(this.currentTrack);
+        console.log("curTrackIdx:", curTrackIdx);
+        if (curTrackIdx + delta < 0) curTrackIdx += this.playlist.length;
+        let nextTrackIdx = (curTrackIdx + delta) % this.playlist.length;
+        console.log("nextTrackIdx:", nextTrackIdx);
+        return this.playlist[nextTrackIdx];
+    }
+
     prevTrack(): void {
         this.waveSurfer.stop();
-        let curTrackIdx = this.playlist.indexOf(this.currentTrack);
-        let prevTrackIdx = (curTrackIdx - 1) % this.playlist.length;
-        this.loadAndPlayTrack(this.playlist[prevTrackIdx]);
+        this.loadAndPlayTrack(this.wrapMoveTrack(-1));
     }
 
     nextTrack(): void {
         this.waveSurfer.stop();
-        let curTrackIdx = this.playlist.indexOf(this.currentTrack);
-        let nextTrackIdx = (curTrackIdx + 1) % this.playlist.length;
-        this.loadAndPlayTrack(this.playlist[nextTrackIdx]);        
+        this.loadAndPlayTrack(this.wrapMoveTrack(1));
     }
 
     playTrack(): void {
