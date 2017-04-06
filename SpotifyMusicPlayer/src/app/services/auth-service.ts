@@ -7,7 +7,7 @@ export class AuthToken {
 
 export class AuthService {
 
-    private clientId = '6d97a1cf9f0f4f97aa4795cda2723757';
+    private clientId = '<SPOTIFY CLIENT ID>';
     private LOCAL_STORAGE_KEY = 'spotifyAccessToken';
 
     init(): void {
